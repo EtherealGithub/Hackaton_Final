@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for hackatonFinal project.
 
@@ -115,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-pe'
 
 TIME_ZONE = 'UTC'
 
@@ -137,3 +138,25 @@ if not DEBUG:
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+##Manejador de ñ
+
+# import json
+
+# class JSONEncoder(json.JSONEncoder):
+#     def default(self, obj):
+#         try:
+#             return super().default(obj)
+#         except TypeError:
+#             return str(obj)
+
+# # ...
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_RENDERER_CLASSES': [
+#         'rest_framework.renderers.JSONRenderer',
+#     ],
+#     'DEFAULT_CHARSET': 'utf-8',
+#     'DEFAULT_ENCODER': 'api.settings.JSONEncoder',  # Reemplaza 'api' por el nombre de tu aplicación
+# }

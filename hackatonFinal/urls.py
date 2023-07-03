@@ -19,7 +19,9 @@ from django.urls import path, include
 from api import views
 
 urlpatterns = [
+    path('', views.My_Home_Login.as_view(), name='My-Home-Login'),
     path('admin/', admin.site.urls),
-    path('api/login/', views.LoginView.as_view(), name='login'),
+    path('api/login/', views.ClienteLoginSet.as_view({'post': 'login'}), name='login'),
     path('api/register/', views.ClienteViewSet.as_view({'post': 'register'}), name='register'),
+    path('api/consultar/', views.ClienteListView.as_view(), name='cliente-list'),
 ]
