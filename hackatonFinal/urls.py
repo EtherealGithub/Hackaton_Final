@@ -18,10 +18,24 @@ from django.contrib import admin
 from django.urls import path, include
 from api import views
 
+records_list = views.ClienteViewSet.as_view({
+    'get': 'list',
+    'post': 'create',
+})
+
+records_detail = views.ClienteViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy',
+})
+
 urlpatterns = [
     path('', views.My_Home_Login.as_view(), name='My-Home-Login'),
     path('admin/', admin.site.urls),
     path('api/login/', views.ClienteLoginSet.as_view({'post': 'login'}), name='login'),
-    path('api/register/', views.ClienteViewSet.as_view({'post': 'register'}), name='register'),
-    path('api/consultar/', views.ClienteListView.as_view(), name='cliente-list'),
+    path('api/registros/listar', records_list, name='registros-lista'),
+    path('api/registros/<int:pk>/', records_detail, name='registros-detalle'),
+    path('api/registros/insertar', views.ClienteViewSet.as_view({'post': 'register'}), name='registros-creacion'),
+    path('api/consultar/', views.ClienteListView.as_view(), name='cliente-lista'),
 ]
